@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace banken
 {
-    class customer
+    class CustomerInfo 
     {
-        public string Name;
-        public int Balance;
-
-        public string BalanceInfo()
+        public string Name; 
+        public int Balance; 
+        public string ShowCustomer()
         {
-
-        }
+            return Name + Balance;
+        } 
     }
 }

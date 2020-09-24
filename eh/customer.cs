@@ -8,5 +8,12 @@ namespace banken
 {
     class customer
     {
+        public string Name;
+        public int Balance;
+
+        public string BalanceInfo()
+        {
+
+        }
     }
 }
