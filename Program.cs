@@ -27,7 +27,7 @@ namespace banken
                         break;
                     case 3:
                         Console.WriteLine("You chose to see all the current customers");
-                        ShowCustomer();
+                        ShowCustomers();
                         break;
                     case 4:
                         Console.WriteLine("You chose to see a customers balance");
@@ -53,22 +53,7 @@ namespace banken
             }
 
 
-            /*CustomerInfo info1 = new CustomerInfo();
-              info1.Name = "Daichi";
-              customerList.Add(info1);
-
-              CustomerInfo info2 = new CustomerInfo();
-              info2.Name = "Mei";
-              customerList.Add(info2);
-
-              CustomerInfo info3 = new CustomerInfo();
-              info3.Name = "Michi";
-              customerList.Add(info3);
-
-              foreach (BalanceInfo info in customerList)
-              {
-                  Console.WriteLine(info.ShowCustomerInfo());
-              }*/
+        
         }
 
         private static void RemoveBalance()
@@ -86,9 +71,12 @@ namespace banken
             throw new NotImplementedException();
         }
 
-        private static void ShowCustomer()
+        private static void ShowCustomers()
         {
-            throw new NotImplementedException();
+            foreach (CustomerInfo info in customerList)
+            {
+                Console.WriteLine(info.ShowCustomerInfo()); //skriver ut listan med kunder + hur mycket de har på sitt konto
+            }
         }
 
         private static void RemoveCustomer()
@@ -98,7 +86,20 @@ namespace banken
 
         private static void AddCustomer()
         {
-            throw new NotImplementedException();
+            CustomerInfo info = new CustomerInfo();
+            Console.Write("Enter the customers name here: "); //skriver ut en prompt att lägga till en ny kund
+            info.Name = Console.ReadLine(); //tar in input från användare i form av ett namn för en ny kund
+            customerList.Add(info); //lägger till inputen från användaren i listan med kunder
+
+            /*CustomerInfo info2 = new CustomerInfo();
+            info2.Name = "Mei";
+            customerList.Add(info2);
+
+            CustomerInfo info3 = new CustomerInfo();
+            info3.Name = "Michi";
+            customerList.Add(info3);*/
+
+            /**/
         }
 
         private static int GetChoiseFromUser()

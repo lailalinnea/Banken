@@ -10,9 +10,9 @@ namespace banken
     {
         public string Name; 
         public int Balance; 
-        public string ShowCustomer()
+        public string ShowCustomerInfo()
         {
-            return Name + Balance;
+            return Name + ": " + Balance;
         } 
     }
 }
