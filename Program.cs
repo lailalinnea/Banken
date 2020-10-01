@@ -58,12 +58,29 @@ namespace banken
 
         private static void RemoveBalance()
         {
-            throw new NotImplementedException();
+            ShowCustomers();
+            Console.Write("Choose which customer to withdawl money to: ");
+            string strChoise = Console.ReadLine();
+            int intChoise = int.Parse(strChoise);
+
+            Console.Write("How much money do you want to withdawl?: ");
+            string strWithdrawl = Console.ReadLine();
+            int intWithdrawl = int.Parse(strWithdrawl);
+            customerList[intChoise].Balance -= intWithdrawl;
         }
 
         private static void AddBalance()
         {
-            throw new NotImplementedException();
+            ShowCustomers();
+            Console.Write("Choose which customer to deposit money to: ");
+            string strChoise = Console.ReadLine();
+            int intChoise = int.Parse(strChoise);
+
+            Console.Write("How much money do you want to deposit?: ");
+            string strDeposit = Console.ReadLine();
+            int intDeposit = int.Parse(strDeposit);
+            customerList[intChoise].Balance += intDeposit; 
+
         }
 
         private static void ShowBalance()
@@ -73,15 +90,25 @@ namespace banken
 
         private static void ShowCustomers()
         {
-            foreach (CustomerInfo info in customerList)
+            for (int i = 0; i < customerList.Count; i++)
             {
-                Console.WriteLine(info.ShowCustomerInfo()); //skriver ut listan med kunder + hur mycket de har på sitt konto
+                Console.WriteLine(i + ": " + customerList[i].ShowCustomerInfo());
             }
         }
 
         private static void RemoveCustomer()
         {
-            throw new NotImplementedException();
+            // input name
+            // if name == name in list 
+            // name.Remove
+            // else
+            // print("there is no existing customer by that name");
+
+            ShowCustomers();
+            Console.Write("Which customer do you want to remove?: ");
+            string strChoise = Console.ReadLine();
+            int intChoise = int.Parse(strChoise);
+            customerList.RemoveAt(intChoise);
         }
 
         private static void AddCustomer()
