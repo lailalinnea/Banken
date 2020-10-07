@@ -8,11 +8,11 @@ namespace banken
 {
     class CustomerInfo 
     {
-        public string Name; 
-        public int Balance; 
-        public string ShowCustomerInfo()
+        public string Name; //  CustomerInfo list
+        public int Balance;  // balance list
+        public string ShowCustomerInfo() // the method where the name and balance is added together and stored until the program is exited
         {
-            return Name + ": " + Balance;
+            return Name + ": " + Balance; // print customer + their balance
         } 
     }
 }
