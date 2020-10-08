@@ -60,12 +60,12 @@ namespace banken
         {
             ShowCustomers(); 
             Console.Write("Choose which customer to withdawl money to: "); // the user choses the customer to make a withdrawl from
-            string strChoise = Console.ReadLine();
-            int intChoise = int.Parse(strChoise);
+            string strChoise = Console.ReadLine(); // input is stored in a string
+            int intChoise = int.Parse(strChoise); // the string is converted to an int
 
             Console.Write("How much money do you want to withdawl?: "); // the user enters the amount of money to withdraw from the account
-            string strWithdrawl = Console.ReadLine();
-            int intWithdrawl = int.Parse(strWithdrawl);
+            string strWithdrawl = Console.ReadLine(); // input is stored in a string
+            int intWithdrawl = int.Parse(strWithdrawl); // the string is converted to an int
             customerList[intChoise].Balance -= intWithdrawl; // the money is subtracted
         }
 
@@ -73,12 +73,12 @@ namespace banken
         {
             ShowCustomers();
             Console.Write("Choose which customer to deposit money to: "); // user choses who to deposit money to
-            string strChoise = Console.ReadLine();
-            int intChoise = int.Parse(strChoise);
+            string strChoise = Console.ReadLine(); // inout from user is stored in a string
+            int intChoise = int.Parse(strChoise); // the input string is converted to an int
 
             Console.Write("How much money do you want to deposit?: "); // user choses how much money to deposit
-            string strDeposit = Console.ReadLine();
-            int intDeposit = int.Parse(strDeposit);
+            string strDeposit = Console.ReadLine(); // input from user is stored in a string
+            int intDeposit = int.Parse(strDeposit); // the string is converted to an int
             customerList[intChoise].Balance += intDeposit;  // the money is added to the account
 
         }
@@ -92,7 +92,8 @@ namespace banken
         {
             for (int i = 0; i < customerList.Count; i++)
             {
-                Console.WriteLine(i + ": " + customerList[i].ShowCustomerInfo());
+                Console.WriteLine( ( i + 1 ) + ": " + customerList[i].ShowCustomerInfo()); // i starts on one so 1 + 1 so that the list will start one one and not zero
+                                                                                           // then i in customer list is added to the string and name and balace is printed
             }
         }
 
@@ -129,9 +130,9 @@ namespace banken
             Console.WriteLine("7 : Exit");
             Console.WriteLine(" ");
             Console.WriteLine("Enter your choise here: ");
-            string strChoise = Console.ReadLine();
-            int choise = int.Parse(strChoise);
-            return choise;
+            string strChoise = Console.ReadLine(); // input from user stored in a string
+            int choise = int.Parse(strChoise);  // the input string gets converted to an int
+            return choise; // the int value is returned to main
         }
     }
 }
