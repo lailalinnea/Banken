@@ -3,14 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace banken
 {
     class Program
     {
-        static List<CustomerInfo> customerList = new List<CustomerInfo>();
+        public static List<CustomerInfo> customerList = new List<CustomerInfo>();
+
+        static void WriteFile(string filepath, string filename, string text)
+        {
+            string f = filepath + filename;
+            if (File.Exists(f))
+            {
+                File.OpenRead(f); 
+            }
+            if (Directory.Exists(filepath) == false)
+            {
+                Directory.CreateDirectory(filepath);
+            }
+            File.WriteAllText(f, text);
+        }
+
+        static string ReadFile(string filename)
+        {
+            string text = File.ReadAllText(filename);
+            return text;
+        }
+
         static void Main(string[] args)
         {
+            string filepath = @"C:\test\";
+            string filename = @"data.txt";
+
+            string text = ReadFile(filepath + filename);
+            string[] items = text.Split(';');
+            UserInfo ui1 = new UserInfo(items[0]);
+            
+            customerList.Add(ui1);
+            
+            Console.WriteLine(text);
+
+            Console.ReadKey();
+
             int choise = 0;
             while (choise != 7)
             {
