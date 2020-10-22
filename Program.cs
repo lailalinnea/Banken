@@ -11,6 +11,11 @@ namespace banken
     {
         public static List<CustomerInfo> customerList = new List<CustomerInfo>();
 
+
+        // when closing the program 
+        // checks if there is a file in the declared path with the declared filename
+        // if there is it gets deleted
+        // if there isn't it is created
         static void WriteFile(string filepath, string filename, string text)
         {
             string f = filepath + filename;
@@ -25,6 +30,11 @@ namespace banken
             File.WriteAllText(f, text);
         }
 
+
+        // when opening the program 
+        // check if the file exists
+        // if it does its content is returned
+        // if it doesn't an empty string is returned instead
         static string ReadFile(string filename)
         {
             if (File.Exists(filename))
@@ -37,9 +47,10 @@ namespace banken
 
         static void Main(string[] args)
         {
-            string filepath = @"C:\Users\fs1735\OneDrive - LYSTKOM\programering sara\prog2\uppgifter\source\repos\Banken\store\";
-            string filename = @"data.txt";
+            string filepath = @"C:\Users\fs1735\OneDrive - LYSTKOM\programering sara\prog2\uppgifter\source\repos\Banken\store\"; //declare a file patyh
+            string filename = @"data.txt"; // declare a filename 
 
+            // checks if there is a customer file when the program starts
             string text = ReadFile(filepath + filename);
             if (text != "")
             {
@@ -95,12 +106,12 @@ namespace banken
             }
 
 
-            string users = "";
-            foreach (CustomerInfo u in customerList)
+            string users = ""; // empty string
+            foreach (CustomerInfo u in customerList) // goes through the lustomer list and adds them to the empty string
             {
                 users += u.Name + ";";
             }
-            WriteFile(filepath, filename, users);
+            WriteFile(filepath, filename, users); //saves the empty (now not empty) string to a file
 
         }
 
