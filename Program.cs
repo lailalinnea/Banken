@@ -16,7 +16,7 @@ namespace banken
             string f = filepath + filename;
             if (File.Exists(f))
             {
-                File.OpenRead(f); 
+                File.Delete(f); 
             }
             if (Directory.Exists(filepath) == false)
             {
@@ -27,24 +27,31 @@ namespace banken
 
         static string ReadFile(string filename)
         {
-            string text = File.ReadAllText(filename);
-            return text;
+            if (File.Exists(filename))
+            {
+                string text = File.ReadAllText(filename);
+                return text;
+            }
+            return "";
         }
 
         static void Main(string[] args)
         {
-            string filepath = @"C:\test\";
+            string filepath = @"C:\Users\fs1735\OneDrive - LYSTKOM\programering sara\prog2\uppgifter\source\repos\Banken\store\";
             string filename = @"data.txt";
 
             string text = ReadFile(filepath + filename);
-            string[] items = text.Split(';');
-            UserInfo ui1 = new UserInfo(items[0]);
-            
-            customerList.Add(ui1);
-            
-            Console.WriteLine(text);
+            if (text != "")
+            {
+                string[] items = text.Split(';');
+                foreach (string item in items)
+                {
+                    CustomerInfo ui = new CustomerInfo();
+                    ui.Name = item;
+                    customerList.Add(ui);
+                }
+            }
 
-            Console.ReadKey();
 
             int choise = 0;
             while (choise != 7)
@@ -88,7 +95,13 @@ namespace banken
             }
 
 
-        
+            string users = "";
+            foreach (CustomerInfo u in customerList)
+            {
+                users += u.Name + ";";
+            }
+            WriteFile(filepath, filename, users);
+
         }
 
         private static void RemoveBalance()  // take out money
@@ -114,7 +127,7 @@ namespace banken
             Console.Write("How much money do you want to deposit?: "); // user choses how much money to deposit
             string strDeposit = Console.ReadLine(); // input from user is stored in a string
             int intDeposit = int.Parse(strDeposit); // the string is converted to an int
-            customerList[intChoise].Balance += intDeposit;  // the money is added to the account
+            customerList[intChoise - 1].Balance += intDeposit;  // the money is added to the account
 
         }
 
